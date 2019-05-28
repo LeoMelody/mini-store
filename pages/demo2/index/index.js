@@ -2,8 +2,22 @@
 import regeneratorRuntime from '../../../libs/runtime.js'
 import { incrementNumberAction, decrementNumberAction } from '../../../store/actions/number.js'
 import { getUserInfoAction } from '../../../store/actions/user.js'
+import { initStoreData, listenStore, unInstallListener } from '../../../mini-store.js'
+
+// 不使用mixinPage
+import $store from '../../../store/index.js'
+const storeData = {
+  number: {
+    number: 'number'
+  },
+  user: {
+    userInfo: 'userInfo'
+  }
+}
+const initResult = initStoreData(storeData, $store)
 
 Page({
+  $store,
 
   /**
    * 页面的初始数据
@@ -16,55 +30,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    listenStore(initResult, this.$store, this)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onUnload() {
+    unInstallListener(this)
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
+  increme() {
+    this.$store.dispatch(incrementNumberAction())
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  decreme() {
+    this.$store.dispatch(decrementNumberAction())
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  async getUserInfo() {
+    wx.showLoading({
+      title: '获取用户信息中...',
+    })
+    await this.$store.dispatch(getUserInfoAction())
+    setTimeout(() => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '获取成功',
+      })
+    }, 300)
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goNext() {
+    wx.navigateTo({
+      url: '/pages/demo2/user/user',
+    })
   }
 })

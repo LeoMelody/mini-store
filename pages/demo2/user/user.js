@@ -1,4 +1,17 @@
 // pages/demo2/user/user.js
+// 不使用mixinPage
+import { initStoreData, listenStore, unInstallListener } from '../../../mini-store.js'
+import $store from '../../../store/index.js'
+const storeData = {
+  number: {
+    number: 'number'
+  },
+  user: {
+    userInfo: 'userInfo'
+  }
+}
+const initResult = initStoreData(storeData, $store)
+
 Page({
 
   /**
@@ -12,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    listenStore(initResult, this.$store, this)
   },
 
   /**
@@ -40,7 +53,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    unInstallListener(this)
   },
 
   /**
