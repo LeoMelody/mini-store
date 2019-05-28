@@ -13,7 +13,7 @@ const storeData = {
 const initResult = initStoreData(storeData, $store)
 
 Page({
-
+  $store,
   /**
    * 页面的初始数据
    */
