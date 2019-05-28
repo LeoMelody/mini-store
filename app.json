@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/demo1/index/index",
+    "pages/demo1/user/user",
+    "pages/demo2/index/index",
+    "pages/demo2/user/user"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

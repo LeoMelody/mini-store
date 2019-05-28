@@ -1,0 +1,6 @@
+<!--pages/demo1/user/user.wxml-->
+<view>{{number}}</view>
+
+<view>
+  {{userInfo.userName}}
+</view>

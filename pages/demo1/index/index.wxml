@@ -1,0 +1,9 @@
+<!--pages/demo1/index/index.wxml-->
+<text>{{number}}</text>
+<button bindtap='increme'>+</button>
+<button bindtap='decreme'>-</button>
+<view style='padding-top: 20px;'></view>
+<button bindtap='getUserInfo'>获取用户信息</button>
+<button bindtap='goNext'>前往下一页</button>
+
+<view wx:if="{{userInfo.userName}}">{{userInfo.userName}}</view>

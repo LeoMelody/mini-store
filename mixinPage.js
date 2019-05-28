@@ -46,7 +46,7 @@ function baseOptions() {
      */
     onShareAppMessage: function () {
       return {
-        path: `/pages/index/index`
+        path: `/pages/demo1/index/index`
       }
     }
   }
@@ -68,7 +68,7 @@ const mixinFn = (options) => {
     return baseOptions()
   }
   // TODO 这个storeData后面能干嘛用呢？
-  const initResult = initStoreData(options.storeData, options, baseOptions().$store)
+  const initResult = initStoreData(options.storeData, baseOptions().$store)
   const data = {
     ...baseOptions().data,
     ...options.data || {}

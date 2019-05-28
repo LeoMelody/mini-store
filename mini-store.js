@@ -2,7 +2,7 @@
  * @Author: leo
  * @Date: 2019-04-26 09:44:03
  * @Last Modified by: leo
- * @Last Modified time: 2019-05-21 15:44:47
+ * @Last Modified time: 2019-05-28 11:34:49
  * 小程序Store数据处理中心
  */
 /**
@@ -11,10 +11,6 @@
 export const initStoreData = (function() {
   return function(
     storeData = {},
-    options = {
-      data: {},
-      storeData: {}
-    },
     $store
   ) {
     const stateCache = new Map()
