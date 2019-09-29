@@ -13,7 +13,8 @@ import regeneratorRuntime from '../libs/runtime'
 export const getUserInfo = async function(params) {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: 'https://easy-mock.com/mock/5cecdda0cc7ed92ea6ead5bd/ministore/getUserInfo',
+      // url: 'https://easy-mock.com/mock/5cecdda0cc7ed92ea6ead5bd/ministore/getUserInfo',
+      url: "http://localhost:7777/getUserInfo",
       data: params,
       header: {'content-type':'application/json'},
       method: 'GET',

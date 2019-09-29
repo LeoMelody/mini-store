@@ -13,6 +13,7 @@ SelfPage({
 
   },
 
+  // 这个就和我们在vue computed 中些 ...mapState() 异曲同工
   storeData: {
     number: {
       number: 'number'

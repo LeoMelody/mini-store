@@ -2,7 +2,7 @@
  * @Author: leo 
  * @Date: 2019-02-12 18:12:53 
  * @Last Modified by: leo
- * @Last Modified time: 2019-05-28 10:53:13
+ * @Last Modified time: 2019-09-29 00:05:05
  * page 基础配置
  */
 import store from './store/index.js'
@@ -67,7 +67,7 @@ const mixinFn = (options) => {
   if (!options || typeof options !== 'object') {
     return baseOptions()
   }
-  // TODO 这个storeData后面能干嘛用呢？
+  // 依赖收集
   const initResult = initStoreData(options.storeData, baseOptions().$store)
   const data = {
     ...baseOptions().data,
@@ -83,6 +83,7 @@ const mixinFn = (options) => {
   const onUnload = options.onUnload
 
   options.onLoad = function(options) {
+    // 将收集到的依赖传入到
     this._beforeLoad(initResult, options)
     onLoad && onLoad.call(this, options)
   }
